@@ -1,38 +1,236 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ipodDiv{
+  min-width: 300px;
+  height: 500px;
+  background: #f0f0f0;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to bottom, #eef2f3, #bcc6cd);  Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to bottom, #eef2f3, #b4bec7); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px 7px rgb(195, 195, 195) inset,0px 0px 10px 7px rgb(199, 220, 239);
+  /* box-shadow: -2px -2px 5px gray; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+}
+
+.screen{
+  width: 90%;
+  height: 200px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  background: url('./img/nature.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bottons_div{
+  width: 95%;
+  height: 225px;
+  /* background-color: white; */
+}
+.btns{
+  position: relative;
+  width: 225px;
+  height: 100%;
+  border-radius: 50%;
+  background-color: white;
+  margin: auto;
+  color: gray;
+}
+.solid_circle{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  top:62px;
+  right: 62px;
+}
+.menu_btn{
+  position: absolute;
+  top:20px;
+  left: 90px;
+  font-weight: 700;
+}
+.right{
+  position: absolute;
+  top: 100px;
+  right: 25px;
+}
+.left{
+  position: absolute;
+  top:100px;
+  left: 25px;
+}
+.bottom{
+  position: absolute;
+  bottom: 20px;
+  left: 90px;
+}
+.bottom i{
+  margin-left: 5px;
+}
+
+/* menu */
+.screen_div{
+  width: 150px;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  opacity: .8;
+}
+
+
+
+.screen_div h2{
+  text-align: center;
+}
+
+.screen_div>div{
+  width: 90%;
+  height: 30px;
+  padding: 2px 5px;
+}
+
+.music{
+  opacity: .8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.active{
+  display: inline-block;
+}
+.disable{
+  display: none;
+}
+.coverflow_menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+
+/* songs */
+
+.play_song{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.song_detail{
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.song_poster{
+  width: 45%;
+  aspect-ratio: 1/1;
+  background: url('./img/song1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.song_name{
+    font-weight: 600;
+    color: rgba(0,0,0, .8);
+}
+.song_name span{
+  color: gray;
+}
+.bar{
+  width: 90%;
+  height: 5px;
+  background-color: grey;
+  margin: auto;
+  border-radius: 2px;
+}
+.use_bar{
+  width: 30%;
+  height: 100%;
+  border-radius: 2px;
+  background-color: rgb(80, 211, 255);
+}
+
+.song_bar{
+  height: auto;
+}
+
+.timeline{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+  font-size: .7rem;
+}
+
+/* game */
+.game{
+  width: 100%;
+  height: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 7px;
+  font-weight: 600;
+}
+.game_pic{
+  width: 60%;
+  height: 60%;
+}
+.game_pic img{
+  width: 100%;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.setting{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.setting_img{
+  font-size: 5rem;
+  width: 60%;
+  height: 60%;
+  text-align: center;
+}
+
+/* coverflow */
+
+.coverflow{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  background-color: white;
+}
+.coverflow div{
+  font-weight: 600;
+  font-size: 1.5rem;
 }
