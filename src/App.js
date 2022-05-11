@@ -18,7 +18,10 @@ class App extends React.Component {
             showGame:false,
             showSetting:false,
             showCoverflow:false,
-            showCom: -1
+            showCom: -1,
+            currentTime:0,
+            totalTime:0,
+            percent:"0%",
         }
     }
 
@@ -103,6 +106,7 @@ class App extends React.Component {
                     showGame:false,
                     showSetting:false,
                     showCoverflow:false,
+                   
                 })
             }
         }
@@ -130,6 +134,28 @@ class App extends React.Component {
         }
     }
 
+    handle_play_pause = (e)=>{
+        if(this.state.showSong){
+            let audio = document.querySelector("#audio");
+            if(audio.paused){
+                let ipod = this;
+                audio.play();
+                let duration =  audio.duration;
+                setInterval(() => {
+                    let current_time = audio.currentTime;
+                    let per = (current_time/duration)*100;
+                    ipod.setState({
+                        currentTime:current_time,
+                        percent:`${per}%`,
+                        totalTime:duration
+                    })
+                }, 1000);
+            }else{
+                audio.pause();
+            }
+        }
+    }
+
   render(){
     let showComponent;
     if(this.state.showCoverflow){
@@ -143,7 +169,7 @@ class App extends React.Component {
     }else if(this.state.showSetting){
         showComponent = <Setting/>;
     }else if(this.state.showSong){
-        showComponent = <Song/>;
+        showComponent = <Song percent={this.state.percent} current={this.state.currentTime} duration ={this.state.totalTime} />;
     }
     return(
     <div className="ipodDiv">
@@ -161,7 +187,7 @@ class App extends React.Component {
                 <div className="left">
                 <i className="fas fa-fast-backward"></i>
                 </div>
-                <div className="bottom">
+                <div className="bottom" id="play_pause" onClick={this.handle_play_pause}>
                 <i className="fas fa-pause"></i>
                 <i className="fas fa-play"></i>
                 </div>

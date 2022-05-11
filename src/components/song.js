@@ -1,8 +1,12 @@
 import React from "react";
+import song from '../audio/competition.mp3'
 
 
 class Song extends React.Component{
     render(){
+        let stl={
+            width:this.props.percent
+        }
         return(
             <div className="play_song">
                 <div className="song_detail">
@@ -15,16 +19,21 @@ class Song extends React.Component{
                 </div>
                 <div className="song_bar">
                     <div className="bar">
-                        <div className="use_bar">
+                        <div className="use_bar" style={stl} >
+                            <audio
+                            id ="audio"
+                            src={song}
+                            >
 
+                            </audio>
                         </div>
                     </div>
                     <div className="timeline">
                         <div className="current_time">
-                            00:00
+                            {Math.floor(this.props.current)}
                         </div>
                         <div className="end_time">
-                            03:54
+                            {Math.floor(this.props.duration)}
                         </div>
                     </div>
                 </div>
