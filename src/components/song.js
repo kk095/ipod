@@ -7,6 +7,10 @@ class Song extends React.Component{
         let stl={
             width:this.props.percent
         }
+        let end_min = Math.floor((this.props.duration/60));
+        let end_sec = Math.floor(this.props.duration-(end_min*60));
+        let start_min = Math.floor(this.props.current/60);
+        let start_sec = Math.floor(this.props.current-(start_min*60))
         return(
             <div className="play_song">
                 <div className="song_detail">
@@ -20,7 +24,7 @@ class Song extends React.Component{
                 <div className="song_bar">
                     <div className="bar">
                         <div className="use_bar" style={stl} >
-                            <audio
+                            <audio autoPlay
                             id ="audio"
                             src={song}
                             >
@@ -30,10 +34,12 @@ class Song extends React.Component{
                     </div>
                     <div className="timeline">
                         <div className="current_time">
-                            {Math.floor(this.props.current)}
+                            {/* {Math.floor(this.props.current)} */}
+                            {start_min}:{start_sec}
                         </div>
                         <div className="end_time">
-                            {Math.floor(this.props.duration)}
+                            {/* {Math.floor(this.props.duration)} */}
+                            {end_min}:{end_sec}
                         </div>
                     </div>
                 </div>

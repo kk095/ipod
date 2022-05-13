@@ -22,6 +22,7 @@ class App extends React.Component {
             currentTime:0,
             totalTime:0,
             percent:"0%",
+            update:true
         }
     }
 
@@ -58,7 +59,6 @@ class App extends React.Component {
     }
 
     handleClick = (e)=>{
-        console.log("clicked");
         console.log(this);
         if(this.state.showMenu){
         if(this.state.showCom ===1){
@@ -108,6 +108,7 @@ class App extends React.Component {
                     showCoverflow:false,
                    
                 })
+                
             }
         }
     }
@@ -136,24 +137,74 @@ class App extends React.Component {
 
     handle_play_pause = (e)=>{
         if(this.state.showSong){
+            this.setState({
+                update:false
+            })
             let audio = document.querySelector("#audio");
+            console.log("audio",audio);
             if(audio.paused){
-                let ipod = this;
                 audio.play();
-                let duration =  audio.duration;
+                console.log("paused!");
+                let ipod = this;
+                let duration;
+                setTimeout(() => {
+                    duration =  audio.duration
+                    this.setState({
+                        totalTime:duration
+                    })
+                }, 1000);
                 setInterval(() => {
                     let current_time = audio.currentTime;
                     let per = (current_time/duration)*100;
                     ipod.setState({
                         currentTime:current_time,
                         percent:`${per}%`,
-                        totalTime:duration
+                       
                     })
                 }, 1000);
             }else{
                 audio.pause();
+                console.log("play mode");
             }
         }
+    }
+
+    componentDidUpdate(){
+        if(this.state.update){
+            this.handle_play_pause();
+        }
+    }
+
+    handleForward = (e)=>{
+        let audio = document.querySelector("#audio");
+        let ipod = this;
+        let duration =  audio.duration;
+            let current_time = audio.currentTime;
+            current_time += 10;
+            let per = (current_time/duration)*100;
+            ipod.setState({
+                currentTime:current_time,
+                percent:`${per}%`,
+                totalTime:duration
+            })
+            audio.currentTime=current_time;
+    }
+    handleBackward = (e)=>{
+        let audio = document.querySelector("#audio");
+        let ipod = this;
+        let duration =  audio.duration;
+            let current_time = audio.currentTime;
+            current_time -= 10;
+            if(current_time<0){
+                current_time=0;
+            }
+            let per = (current_time/duration)*100;
+            ipod.setState({
+                currentTime:current_time,
+                percent:`${per}%`,
+                totalTime:duration
+            })
+            audio.currentTime=current_time;
     }
 
   render(){
@@ -181,10 +232,10 @@ class App extends React.Component {
                 <div className="menu_btn" onClick={this.handleMenu}>
                     MENU
                 </div>
-                <div className="right">
+                <div className="right" id="forward_btn" onClick={this.handleForward} >
                 <i className="fas fa-fast-forward"></i>
                 </div>
-                <div className="left">
+                <div className="left" id="backward_btn" onClick={this.handleBackward} >
                 <i className="fas fa-fast-backward"></i>
                 </div>
                 <div className="bottom" id="play_pause" onClick={this.handle_play_pause}>
