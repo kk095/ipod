@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f7c85eb3.css",
+    "main.js": "/static/js/main.c2adc883.js",
+    "static/js/787.514f1f55.chunk.js": "/static/js/787.514f1f55.chunk.js",
+    "static/media/competition.mp3": "/static/media/competition.98d5d588e8cb029d3d1a.mp3",
+    "static/media/nature.jpg": "/static/media/nature.7772dfc2b5ed27bc8675.jpg",
+    "static/media/game.png": "/static/media/game.422ceba9e3cdc2d21b82.png",
+    "static/media/song1.jpg": "/static/media/song1.63246977a35b72967df4.jpg",
+    "index.html": "/index.html",
+    "main.f7c85eb3.css.map": "/static/css/main.f7c85eb3.css.map",
+    "main.c2adc883.js.map": "/static/js/main.c2adc883.js.map",
+    "787.514f1f55.chunk.js.map": "/static/js/787.514f1f55.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f7c85eb3.css",
+    "static/js/main.c2adc883.js"
+  ]
+}
